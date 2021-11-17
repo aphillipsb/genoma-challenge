@@ -24,4 +24,8 @@ def read_restaurants(db: Session=Depends(get_db)):
 @app.post('/restaurants', response_model=schema.Restaurant)
 def create_restaurant(restaurant: schema.RestaurantCreate, db: Session=Depends(get_db)):
     return crud.create_restaurant(db=db, restaurant=restaurant)
+
+@app.delete('/restaurants/{restaurant_id}', response_model=schema.Restaurant)
+def delete_restaurant(restaurant_id: int, db: Session=Depends(get_db)):
+    return crud.delete_restaurant(db=db, restaurant_id=restaurant_id)
     
