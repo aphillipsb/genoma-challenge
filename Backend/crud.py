@@ -15,6 +15,5 @@ def delete_restaurant(db: Session, restaurant_id: int):
     restaurant = db.query(models.Restaurant).filter(models.Restaurant.id == restaurant_id).first()
     db.delete(restaurant)
     db.commit()
-    db.refresh(restaurant)
     return restaurant
 
