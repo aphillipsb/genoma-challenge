@@ -1,10 +1,13 @@
-from pydantic import BaseModel
-from typing import Optional
+from sqlalchemy import Boolean, Column, Integer, String
 
-class Restaurant(BaseModel):
-    name: str
-    city: str
-    country: str
-    food_type: str
-    qualification: Optional[int] = None
-    visted: bool = false
+from database import Base
+
+class Restaurant(Base):
+    __tablename__ = 'restaurants'
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    location = Column(String)
+    food_type = Column(String)
+    qualification = Column(Integer, default=0)
+    visted = Column(Boolean, default=False)
