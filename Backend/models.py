@@ -9,5 +9,5 @@ class Restaurant(Base):
     name = Column(String)
     location = Column(String)
     food_type = Column(String)
-    qualification = Column(Integer, default=0)
+    qualification = Column(Integer, default=None)
     visted = Column(Boolean, default=False)
