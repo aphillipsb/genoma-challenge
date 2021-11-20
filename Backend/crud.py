@@ -4,8 +4,9 @@ import models, schema
 def get_restaurant_by_id(db: Session, restaurant_id: int):
     return db.query(models.Restaurant).filter(models.Restaurant.id == restaurant_id).first()
 
-def get_restaurants(db: Session):
-    return db.query(models.Restaurant).all()
+def get_restaurants(db: Session, location_filter: str):
+    location_filter = '%' + location_filter + '%'
+    return db.query(models.Restaurant).filter(models.Restaurant.location.like(location_filter)).all()
 
 def create_restaurant(db: Session, restaurant: schema.RestaurantCreate):
     db_restaurant = models.Restaurant(**restaurant.dict())
